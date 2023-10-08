@@ -3,6 +3,7 @@
 //
 
 #include <vector>
+#include <cstdlib>
 #include "action.h"
 
 #ifndef LEARNSOMETHING_HACKATHONBOT_H
@@ -15,10 +16,11 @@ class HackathonBot {
     double getBalance();
     bool isHolding();
     private:
-    double balance;
-    bool holding;
+    double balance = 0;
+    bool holding = false;
     int priceDownDays = 0;
     int priceUpDays = 0;
+    std::vector<float> priceHistory;
     void buy();
     void sell();
 };
