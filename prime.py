@@ -1,22 +1,25 @@
 import timeit
 
+def prime_factors(n):
+    factors = set()
+    while n % 2 == 0:
+        factors.add(2)
+        n //= 2
+    for i in range(3, int(n**0.5) + 1, 2):
+        while n % i == 0:
+            factors.add(i)
+            n //= i
+    if n > 1:
+        factors.add(n)
+    return factors
+
 def disasterCode():
+    unique_primes = []
     for i in range (2,2500):
-        uniquePrimes = []
-        currentPrime = i
-        for j in range (2,i):
-            checkPrime = j
-            flag = False
-            for k in range (2,checkPrime-1):
-                if (j%k==0):
-                    flag = True
-                    break
-            if not flag and i%checkPrime==0 and checkPrime <= i:
-                while (currentPrime%checkPrime==0):
-                    currentPrime/=checkPrime
-                uniquePrimes.append(checkPrime)
-        if len(uniquePrimes) == 0:
-            uniquePrimes.append(i)
+        factors = prime_factors(i)
+        unique_primes.extend(factors)
+    return unique_primes
+        
 
 # Benchmark the code
 if __name__ == "__main__":
