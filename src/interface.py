@@ -79,30 +79,7 @@ class Exchange:
         if trade.quantity > 0:
             self.pending.append(trade)
 
-        # print("match")
-        # for match in matches:
-        #     print(" ", match)
-        # print("pending")
-        # for p in self.pending:
-        #     print(" ",p)
-
-initial_balance = 10000
-accounts = {
-    "Alice": [initial_balance, 500]
-}
-
-exchange = Exchange(initial_balance, accounts)
-
-trade1 = Trade(trader='Alice', is_buy=False, quantity=10, price=50)
-trade2 = Trade(trader='Bob', is_buy=True, quantity=5, price=50)
-trade3 = Trade(trader='George', is_buy=True, quantity=7, price=50)
-
-result1 = exchange.add_trade(trade1)
-result2 = exchange.add_trade(trade2)
-result3 = exchange.add_trade(trade3)
-
-print(exchange.accounts)
-print(exchange.pending)
+        return self.accounts
 
     
 
